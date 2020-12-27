@@ -75,9 +75,9 @@ To write a longer commit message which will open in our default editor:
 
 Show information about files in the index and the working tree
 
-`git-ls-files`
+`git ls-files`
 
-Flow for removing a file also involves using `git add` command
+Flow for removing a file:
 
 ```
 rm file2.txt
@@ -100,3 +100,21 @@ git add main.txt
 
 git mv file1.txt main.txt
 ```
+
+### Ignoring files
+
+Files that we don't want or need to share/synchronize with other team members
+
+Create file called `.gitignore`
+
+```
+logs/
+main.log
+*.log
+```
+
+`logs/` - indicates a directory to ingore:
+
+`main.log` - a specific file
+
+`*.log` - a pattern for all .log files
