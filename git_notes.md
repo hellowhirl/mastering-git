@@ -148,3 +148,13 @@ Alternative to git status is `git status -s`
   - if we modify again then we will see green "M" in left column and red "M" in right column
 - for a new file we will see 2 ?'s like "??"
   - when we add to staging area then we will see green "A" in left column which represents "added"
+
+### Viewing Staged and Unstaged Changes
+
+See the changes in files in staging area that will go into next commit
+
+`git diff --staged`
+
+See the changes in files between staging area and working directory
+
+`git diff`
