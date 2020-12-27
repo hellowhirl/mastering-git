@@ -137,3 +137,14 @@ Remember: .gitignore only works like this if we haven't already included a file 
   - From this point forward git is no longer going to track changes in bin/ directory
 
 There are various .gitignore templates available on GitHub
+
+### Short Status
+
+Alternative to git status is `git status -s`
+
+- we have 2 columns: left represents "staging area", and right column represents the "working directory"
+- a red "M" in the right column means we have some changes but they are not in the staging area
+  - when we add to staging area then we will see green "M" in the left column for staging area, and nothing in right column
+  - if we modify again then we will see green "M" in left column and red "M" in right column
+- for a new file we will see 2 ?'s like "??"
+  - when we add to staging area then we will see green "A" in left column which represents "added"
