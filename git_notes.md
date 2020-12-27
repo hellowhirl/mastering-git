@@ -158,3 +158,10 @@ See the changes in files in staging area that will go into next commit
 See the changes in files between staging area and working directory
 
 `git diff`
+
+### Virtual DIff Tools
+
+- There was once a practice to use Diff Tools like KDiff3, P4Merge, etc. but now most people just use built-in functionality in VS Code
+- After setting up `difftool` in .gitconfig file we can use below command to launch in our default editor:
+
+  `git difftool --staged`
