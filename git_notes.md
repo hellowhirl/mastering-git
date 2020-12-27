@@ -87,6 +87,8 @@ git add file2.txt
 git rm file2.txt
 ```
 
+- `git rm` will remove a file from the staging area AND the working directory
+
 When we use `git status` and we see green files, those are in the staging area
 
 ### Renaming files
@@ -121,4 +123,17 @@ main.log
 
 Remember: .gitignore only works like this if we haven't already included a file or directory in our repository
 
-- in other words, if we accidentally include a file in our repostiory and then later add it to .gitignore, git is NOT going to ignore it
+- If we accidentally include a file in our repostiory and then later add it to .gitignore, git is NOT going to ignore it
+- In this case git is not going to ignore the changes in this directory because it's already tracking this directory
+- To solve this problem we have to remove this file ONLY from the staging area which is what we will be propssing for the next commit
+
+  - for the `--cached` flag we we see it only removes from the "index", which is the old term for "staging area"
+
+    ```
+    git rm --cached -r bin/
+    git commit -m "remove the bin/ directory that was accidentally commited"
+    ```
+
+  - From this point forward git is no longer going to track changes in bin/ directory
+
+There are various .gitignore templates available on GitHub
