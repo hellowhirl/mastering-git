@@ -216,10 +216,24 @@ In the past people used to use `git reset` but it was confusing with flags like 
 // single or multiple files
 git restore --staged fileName1.js fileName2.js
 
-//all files
+//all files in staging area
 git restore --staged .
 
+//all files in working area (local)
+git restore .
 ```
 
 - this will remove changes to staging area by replacing with changes in next environment, which is the last commit in our repo
 - with a new file, git will return the file to its previous state, which is a new untracked file
+
+### Discarding Local Changes
+
+For new untracked files `git reset` will not work for new files, because a record of it doesn't exist anywhere in our environments. So instead we use the `clean` command
+
+```
+// to remove all untracked files, including directories forcefully
+git clean -fd
+
+// to get interactive menu before cleaning
+git clean -i
+```
