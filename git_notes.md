@@ -165,3 +165,18 @@ See the changes in files between staging area and working directory
 - After setting up `difftool` in .gitconfig file we can use below command to launch in our default editor:
 
   `git difftool --staged`
+
+### Viewing History with git log - Basics
+
+- `git log` lists all the commits we have created, and if there are many we can go to next page with `spacebar`
+- Each commit has a unique identifier which is a unique 40 character string
+- `master` or `main` is the main branch (line of work) in git
+- `HEAD` is a reference to the current branch; this is how git knows which branch we're currently working on
+
+See git commits in reverse order:
+
+`git log --reverse`
+
+Simple comprehensive view of commits in history:
+
+`git log --oneline`
