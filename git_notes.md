@@ -207,3 +207,19 @@ To list all the files and directories stored in a commit:
 - `ls-tree` means list all the files in a tree
 - files are represented using `blob` and directories are represented using `tree`
 - and then using the `show` command we can view an object in git's database, like Commits as well as Tags
+
+### Unstaging Files
+
+In the past people used to use `git reset` but it was confusing with flags like `--hard` or `--soft`, but now we use:
+
+```
+// single or multiple files
+git restore --staged fileName1.js fileName2.js
+
+//all files
+git restore --staged .
+
+```
+
+- this will remove changes to staging area by replacing with changes in next environment, which is the last commit in our repo
+- with a new file, git will return the file to its previous state, which is a new untracked file
