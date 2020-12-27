@@ -138,7 +138,7 @@ Remember: .gitignore only works like this if we haven't already included a file 
 
 There are various .gitignore templates available on GitHub
 
-### Short Status
+### Short status
 
 Alternative to git status is `git status -s`
 
@@ -149,7 +149,7 @@ Alternative to git status is `git status -s`
 - for a new file we will see 2 ?'s like "??"
   - when we add to staging area then we will see green "A" in left column which represents "added"
 
-### Viewing Staged and Unstaged Changes
+### Viewing staged and unstaged changes
 
 See the changes in files in staging area that will go into next commit
 
@@ -159,14 +159,14 @@ See the changes in files between staging area and working directory
 
 `git diff`
 
-### Virtual DIff Tools
+### Virtual dIff tools
 
 - There was once a practice to use Diff Tools like KDiff3, P4Merge, etc. but now most people just use built-in functionality in VS Code
 - After setting up `difftool` in .gitconfig file we can use below command to launch in our default editor:
 
   `git difftool --staged`
 
-### Viewing History with git log - Basics
+### Viewing history with git log - Basics
 
 - `git log` lists all the commits we have created, and if there are many we can go to next page with `spacebar`
 - Each commit has a unique identifier which is a unique 40 character string
@@ -181,7 +181,7 @@ Simple comprehensive view of commits in history:
 
 `git log --oneline`
 
-### Viewing a Commit
+### Viewing a commit
 
 2 ways to reference a commit (and see differences)
 
@@ -208,7 +208,7 @@ To list all the files and directories stored in a commit:
 - files are represented using `blob` and directories are represented using `tree`
 - and then using the `show` command we can view an object in git's database, like Commits as well as Tags
 
-### Unstaging Files
+### Unstaging files
 
 In the past people used to use `git reset` but it was confusing with flags like `--hard` or `--soft`, but now we use:
 
@@ -226,7 +226,7 @@ git restore .
 - this will remove changes to staging area by replacing with changes in next environment, which is the last commit in our repo
 - with a new file, git will return the file to its previous state, which is a new untracked file
 
-### Discarding Local Changes
+### Discarding local changes
 
 For new untracked files `git reset` will not work for new files, because a record of it doesn't exist anywhere in our environments. So instead we use the `clean` command
 
@@ -237,3 +237,12 @@ git clean -fd
 // to get interactive menu before cleaning
 git clean -i
 ```
+
+### Restoring a file to an earlier version
+
+We can always restore a repository to a previous version using:
+
+`git restore --source=HEAD~1 testingFile.js`
+
+- the `restore` command by default will restore files from the next environment up (commit -> staging, staging -> working directory)
+- so here we change the default source to the commit before the last one, and specify the file we want to restore to previous version
