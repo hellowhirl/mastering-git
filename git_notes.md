@@ -180,3 +180,30 @@ See git commits in reverse order:
 Simple comprehensive view of commits in history:
 
 `git log --oneline`
+
+### Viewing a Commit
+
+2 ways to reference a commit (and see differences)
+
+```
+// by unique identifier, shorter if they are unique characters:
+git show d64723
+
+// HEAD pointer, view last commit
+git show HEAD
+// previous commits using tilde and how many steps we want to go back
+git show HEAD~1
+
+```
+
+To see exact version of file that is stored in a commit:
+
+`git show HEAD~1:.gitignore`
+
+To list all the files and directories stored in a commit:
+
+` git ls-tree HEAD~6`
+
+- `ls-tree` means list all the files in a tree
+- files are represented using `blob` and directories are represented using `tree`
+- and then using the `show` command we can view an object in git's database, like Commits as well as Tags
