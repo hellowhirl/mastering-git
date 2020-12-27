@@ -118,3 +118,7 @@ main.log
 `main.log` - a specific file
 
 `*.log` - a pattern for all .log files
+
+Remember: this only works if we haven't already included a file or directory in our repository
+
+- in other words, if we accidentally include a file in our repostiory and then later add it to .gitignore, git is NOT going to ignore it
