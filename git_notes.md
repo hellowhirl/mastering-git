@@ -140,7 +140,7 @@ There are various .gitignore templates available on GitHub
 
 ### Short status
 
-Alternative to git status is `git status -s`
+Alternative to git status is `git status -s` to show more concise summary
 
 - we have 2 columns: left represents "staging area", and right column represents the "working directory"
 - a red "M" in the right column means we have some changes but they are not in the staging area
@@ -246,3 +246,20 @@ We can always restore a repository to a previous version using:
 
 - the `restore` command by default will restore files from the next environment up (commit -> staging, staging -> working directory)
 - so here we change the default source to the commit before the last one, and specify the file we want to restore to previous version
+
+## Browsing History
+
+To see all the files that have been changed in eacc commit we use the `--stat` option:
+
+```
+# full details
+git log ---stat
+
+# shortened
+git log --oneline --stat
+
+```
+
+To see what has been changed for each file in a commit:
+
+`git log --oneline --patch`
