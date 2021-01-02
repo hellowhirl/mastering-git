@@ -302,3 +302,12 @@ git log --oneline -- toc.txt
 # filter commits that have modified a particular file, and see actual changes in file
 git log --oneline --patch -- toc.txt
 ```
+
+### Formatting the log output
+
+We can customize the output of the log command - refer to the docs
+
+```
+# dynamically display author name, commmit hash, commit date, colorize, and more
+g log --pretty=format:"%Cgreen%an%Creset committed %h on %cd"
+```
