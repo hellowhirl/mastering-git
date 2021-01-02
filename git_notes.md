@@ -359,3 +359,31 @@ We can set up aliases specifically for Git
 ```
 git config --global alias."log --pretty=format:'%an committed %h'"
 ```
+
+### Viewing a commit
+
+```
+# go to the HEAD (last commit) and then go 2 steps back
+git show HEAD~2
+
+# if we want to see the final version of a file in a commit
+git show HEAD~2:path/to/file.txt
+
+# see all files that have been added, removed or modified in a commit
+git show HEAD~2 --name-only
+
+# see all files that have been added, removed or modified in a commit and see that status marked
+git show HEAD~2 --name-status
+```
+
+### Viewing the changes across commits
+
+```
+# If we want to see what has been changed in every file over last 3 commits
+git diff HEAD~2 HEAD
+
+# If we want to see what has been changed in a single file over last 3 commits
+git diff HEAD~2 HEAD specificFile.txt
+```
+
+We can also add flags like `--name-status` and `--name-only` to view the list of files that have been changed
