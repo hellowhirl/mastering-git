@@ -249,6 +249,8 @@ We can always restore a repository to a previous version using:
 
 ## Browsing History
 
+### Viewing the history
+
 To see all the files that have been changed in eacc commit we use the `--stat` option:
 
 ```
@@ -263,3 +265,40 @@ git log --oneline --stat
 To see what has been changed for each file in a commit:
 
 `git log --oneline --patch`
+
+### Filtering the history
+
+```
+# filter by author
+git log --oneline --author="Mosh"
+
+# filter by date
+git log --oneline --after="2020-08-17"
+
+# filter by relative date
+git log --oneline --after="yesterday"
+--after="one week ago"
+--after="two days ago"
+--after="one month ago"
+
+# filter by words in commit message (case sensitive)
+git log --oneline --grep="GUI"
+
+# filter by content in the files
+git log --oneline -S"hello()"
+
+# filter by content in the files, and to see the actual changes in each commit
+git log --oneline -S"hello()" --patch
+
+# filter commits in a particular range
+git log --oneline fb0d184..edb3594
+
+# filter commits that have modified a particular file
+git log --oneline toc.txt
+
+# filter commits that have modified a particular file, if git complains that file name is ambiguous
+git log --oneline -- toc.txt
+
+# filter commits that have modified a particular file, and see actual changes in file
+git log --oneline --patch -- toc.txt
+```
