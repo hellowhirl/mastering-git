@@ -4,17 +4,23 @@
 
 Get same notes as git website:
 
-`git config --help`
+```
+git config --help
+```
 
 Press 'space' to go to the next page, or 'q' to exit
 
 To get quick refresher:
 
-`git config -h`
+```
+git config -h
+```
 
 Initialize git repository:
 
-`git init`
+```
+git init
+```
 
 ## Creating Snapshots
 
@@ -28,25 +34,35 @@ Initialize git repository:
 
 Even wheh we remove `file2` from the project we can still use below to remove from staging environemnt (Git knows to delete it)
 
-`git add file2`
+```
+git add file2
+```
 
 Standard command for writing content to a file:
 
-`echo hello > file1.txt`
+```
+echo hello > file1.txt
+```
 
 Add all files with .txt extension
 
-`git add *.txt`
+```
+git add *.txt
+```
 
 Append content to a file with `>>`
 
-`echo world >> file1.txt`
+```
+echo world >> file1.txt
+```
 
 If we run `git status` after modifiying a file but before staging with `add` then the status will return `modified: file1.txt`
 
 To write a longer commit message which will open in our default editor:
 
-`git commit`
+```
+git commit
+```
 
 - GIt will then tell us which files were changed and how many lines were inserted
 
@@ -67,15 +83,21 @@ To write a longer commit message which will open in our default editor:
 
 99% of the time we should add to staging. However, to skip we use one of below (-a means "all modified files"):
 
-`git commit -a -m "Fix the bug that freezes the thank you page"`
+```
+git commit -a -m "Fix the bug that freezes the thank you page"
+```
 
-`git commit -am "Fix the bug that freezes the thank you page"`
+```
+git commit -am "Fix the bug that freezes the thank you page"
+```
 
 ### Removing files
 
 Show information about files in the index and the working tree
 
-`git ls-files`
+```
+git ls-files
+```
 
 Flow for removing a file:
 
@@ -83,7 +105,7 @@ Flow for removing a file:
 rm file2.txt
 git add file2.txt
 
-// we can also use below as this is a common operation
+# we can also use below as this is a common operation
 git rm file2.txt
 ```
 
@@ -153,18 +175,24 @@ Alternative to git status is `git status -s` to show more concise summary
 
 See the changes in files in staging area that will go into next commit
 
-`git diff --staged`
+```
+git diff --staged
+```
 
 See the changes in files between staging area and working directory
 
-`git diff`
+```
+git diff
+```
 
 ### Virtual dIff tools
 
 - There was once a practice to use Diff Tools like KDiff3, P4Merge, etc. but now most people just use built-in functionality in VS Code
 - After setting up `difftool` in .gitconfig file we can use below command to launch in our default editor:
 
-  `git difftool --staged`
+  ```
+  git difftool --staged
+  ```
 
 ### Viewing history with git log - Basics
 
@@ -175,34 +203,42 @@ See the changes in files between staging area and working directory
 
 See git commits in reverse order:
 
-`git log --reverse`
+```
+git log --reverse
+```
 
 Simple comprehensive view of commits in history:
 
-`git log --oneline`
+```
+git log --oneline
+```
 
 ### Viewing a commit
 
 2 ways to reference a commit (and see differences)
 
 ```
-// by unique identifier, shorter if they are unique characters:
+# by unique identifier, shorter if they are unique characters:
 git show d64723
 
-// HEAD pointer, view last commit
+# HEAD pointer, view last commit
 git show HEAD
-// previous commits using tilde and how many steps we want to go back
+# previous commits using tilde and how many steps we want to go back
 git show HEAD~1
 
 ```
 
 To see exact version of file that is stored in a commit:
 
-`git show HEAD~1:.gitignore`
+```
+git show HEAD~1:.gitignore
+```
 
 To list all the files and directories stored in a commit:
 
-` git ls-tree HEAD~6`
+```
+ git ls-tree HEAD~6
+```
 
 - `ls-tree` means list all the files in a tree
 - files are represented using `blob` and directories are represented using `tree`
@@ -213,13 +249,13 @@ To list all the files and directories stored in a commit:
 In the past people used to use `git reset` but it was confusing with flags like `--hard` or `--soft`, but now we use:
 
 ```
-// single or multiple files
+# single or multiple files
 git restore --staged fileName1.js fileName2.js
 
-//all files in staging area
+# all files in staging area
 git restore --staged .
 
-//all files in working area (local)
+# all files in working area (local)
 git restore .
 ```
 
@@ -231,10 +267,10 @@ git restore .
 For new untracked files `git reset` will not work for new files, because a record of it doesn't exist anywhere in our environments. So instead we use the `clean` command
 
 ```
-// to remove all untracked files, including directories forcefully
+# to remove all untracked files, including directories forcefully
 git clean -fd
 
-// to get interactive menu before cleaning
+# to get interactive menu before cleaning
 git clean -i
 ```
 
@@ -242,7 +278,9 @@ git clean -i
 
 We can always restore a repository to a previous version using:
 
-`git restore --source=HEAD~1 testingFile.js`
+```
+git restore --source=HEAD~1 testingFile.js
+```
 
 - the `restore` command by default will restore files from the next environment up (commit -> staging, staging -> working directory)
 - so here we change the default source to the commit before the last one, and specify the file we want to restore to previous version
@@ -264,7 +302,9 @@ git log --oneline --stat
 
 To see what has been changed for each file in a commit:
 
-`git log --oneline --patch`
+```
+git log --oneline --patch
+```
 
 ### Filtering the history
 
@@ -310,4 +350,12 @@ We can customize the output of the log command - refer to the docs
 ```
 # dynamically display author name, commmit hash, commit date, colorize, and more
 g log --pretty=format:"%Cgreen%an%Creset committed %h on %cd"
+```
+
+### Aliases in Git
+
+We can set up aliases specifically for Git
+
+```
+git config --global alias."log --pretty=format:'%an committed %h'"
 ```
