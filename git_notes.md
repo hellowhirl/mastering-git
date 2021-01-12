@@ -387,3 +387,24 @@ git diff HEAD~2 HEAD specificFile.txt
 ```
 
 We can also add flags like `--name-status` and `--name-only` to view the list of files that have been changed
+
+### Checking out a commit
+
+As we create more commits, MASTER continues to move and points to the last commit we created so far
+
+HEAD: a special pointer that points to the current branch we are working on
+
+`HEAD -> master`: HEAD is pointing to master
+
+Checkout to attach HEAD pointer to a previous commit:
+
+`git checkout ffbj35 `
+
+`detached HEAD` state: when we check out a particular commit the HEAD pointer will move to that commit - HEAD is no longer attached to a branch anymore, and it points to a certain commit.
+
+- In this state we should not create any new commits - only view it (look around) and make experimental changes.
+  - If we create a commit in this state then that commit is not reachable by any other commits or pointers (a dead commit); Git would later check for these commits later and remove it to save space
+
+To attach HEAD pointer to the master branch:
+
+`git checkout master`
