@@ -408,3 +408,39 @@ Checkout to attach HEAD pointer to a previous commit:
 To attach HEAD pointer to the master branch:
 
 `git checkout master`
+
+### Finding bugs using Bisect
+
+When we don't know where a bug was introduced, we don't want to checkout each individual commit, it's going to take too long.
+
+Using the bisect command we can divide our history in half and checkout various commits to find the first bad commit - we can quickly find the commit that introduced the issue (bug)
+
+```
+# to start the bisect operation
+git bisect start
+
+# tell git where we know a bad commit is (at the current position, HEAD)
+git bisect bad
+
+# also tell Git where there is a good commit
+git bisect good cj9025
+
+# this will take us to the middle of the commit history
+# then we can run our application or run our automated tests to see if the issue is still there or not
+
+git bisect good
+
+# once again we run our application or run our automated tests to see if the issue is still there or not
+
+git bisect bad
+
+# keep doing until we find the last bad commit
+
+git bisect bad
+
+# then Git will know the first bad commit, and we will get full information about this commit (author, date/time, message, summary of changes)
+
+# when we are done we have to attach the HEAD pointer to the master branch
+
+git bisect reset
+```
