@@ -291,7 +291,7 @@ git restore --source=HEAD~1 testingFile.js
 
 ### Viewing the history
 
-To see all the files that have been changed in eacc commit we use the `--stat` option:
+To see all the files that have been changed in each commit we use the `--stat` option:
 
 ```
 # full details
@@ -419,12 +419,15 @@ Using the bisect command we can divide our history in half and checkout various 
 
 ```
 # to start the bisect operation
+
 git bisect start
 
 # tell git where we know a bad commit is (at the current position, HEAD)
+
 git bisect bad
 
 # also tell Git where there is a good commit
+
 git bisect good cj9025
 
 # this will take us to the middle of the commit history
@@ -441,7 +444,6 @@ git bisect bad
 git bisect bad
 
 # then Git will know the first bad commit, and we will get full information about this commit (author, date/time, message, summary of changes)
-
 # when we are done we have to attach the HEAD pointer to the master branch
 
 git bisect reset
@@ -455,5 +457,16 @@ To find all the people that have commited to our project and who are the most ac
 git shortlog
 
 # also there are options to see number of commits, summary, email, filter by date, etc.
+
 git shortlog -n -s -e --before="" --afterr=""
+```
+
+### Viewing the history of a file
+
+We can find all the commits that have touched a specific file, or files
+
+```
+# simply append the file name at the end
+
+git log  --oneline --patch toc.txt
 ```
