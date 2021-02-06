@@ -465,8 +465,30 @@ git shortlog -n -s -e --before="" --afterr=""
 
 We can find all the commits that have touched a specific file, or files
 
-```
-# simply append the file name at the end
+- simply append the file name at the end
 
+```
 git log  --oneline --patch toc.txt
+```
+
+### Restoring a deleted file
+
+```
+git rm toc.txt
+git commit -m "accidentally delete file, for demonstration"
+```
+
+Will show all the commits that have touched toc.txt file
+
+```
+git log --oneline -- toc.txt
+```
+
+- To restore the file we have to look at the parent of the latest commit (before it was deleted)\
+- Then we commit the file (which will show in the staging area)
+
+```
+git checkout a70r52 toc.txt
+
+git commit -m "Restore toc.txt"
 ```
