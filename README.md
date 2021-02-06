@@ -516,3 +516,17 @@ git checkout a70r52 toc.txt
 
 git commit -m "Restore toc.txt"
 ```
+
+### Finding the author of Line using blame
+
+To find the author of a particular line
+
+```
+git blame audience.txt
+
+# to return email
+git blame -e audience.txt
+
+# to list only first 3 lines that were changed
+git blame -L 1,3 audience.txt
+```
