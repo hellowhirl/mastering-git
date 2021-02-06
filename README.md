@@ -380,12 +380,17 @@ git show HEAD~2 --name-status
 
 ### Viewing the changes across commits
 
-```
-# If we want to see what has been changed in every file over last 3 commits
-git diff HEAD~2 HEAD
+If we want to see what has been changed in every file over last 3 commits
 
-# If we want to see what has been changed in a single file over last 3 commits
+```
+git diff HEAD~2 HEAD
+```
+
+If we want to see what has been changed in a single file over last 3 commits
+
+```
 git diff HEAD~2 HEAD specificFile.txt
+
 ```
 
 We can also add flags like `--name-status` and `--name-only` to view the list of files that have been changed
@@ -417,35 +422,49 @@ When we don't know where a bug was introduced, we don't want to checkout each in
 
 Using the bisect command we can divide our history in half and checkout various commits to find the first bad commit - we can quickly find the commit that introduced the issue (bug)
 
+To start the bisect operation
+
 ```
-# to start the bisect operation
-
 git bisect start
+```
 
-# tell git where we know a bad commit is (at the current position, HEAD)
+Tell git where we know a bad commit is (at the current position, HEAD)
 
+```
 git bisect bad
+```
 
-# also tell Git where there is a good commit
+Also tell Git where there is a good commit
 
+```
 git bisect good cj9025
+```
 
-# this will take us to the middle of the commit history
-# then we can run our application or run our automated tests to see if the issue is still there or not
+This will take us to the middle of the commit history.
 
+Then we can run our application or run our automated tests to see if the issue is still there or not.
+
+```
 git bisect good
+```
 
-# once again we run our application or run our automated tests to see if the issue is still there or not
+Once again we run our application or run our automated tests to see if the issue is still there or not.
 
+```
 git bisect bad
+```
 
-# keep doing until we find the last bad commit
+Keep doing until we find the last bad commit.
 
+```
 git bisect bad
+```
 
-# then Git will know the first bad commit, and we will get full information about this commit (author, date/time, message, summary of changes)
-# when we are done we have to attach the HEAD pointer to the master branch
+Then Git will know the first bad commit, and we will get full information about this commit (author, date/time, message, summary of changes)
 
+When we are done we have to attach the HEAD pointer to the master branch.
+
+```
 git bisect reset
 ```
 
@@ -455,37 +474,42 @@ To find all the people that have commited to our project and who are the most ac
 
 ```
 git shortlog
+```
 
-# also there are options to see number of commits, summary, email, filter by date, etc.
+Also there are options to see number of commits, summary, email, filter by date, etc.
 
+```
 git shortlog -n -s -e --before="" --afterr=""
 ```
 
 ### Viewing the history of a file
 
-We can find all the commits that have touched a specific file, or files
+We can find all the commits that have touched a specific file, or files.
 
-- simply append the file name at the end
+Simply append the file name at the end of `git log`
 
 ```
-git log  --oneline --patch toc.txt
+git log --oneline --patch toc.txt
 ```
 
 ### Restoring a deleted file
+
+We make a mistake:
 
 ```
 git rm toc.txt
 git commit -m "accidentally delete file, for demonstration"
 ```
 
-Will show all the commits that have touched toc.txt file
+To show all the commits that have touched "toc.txt" file
 
 ```
 git log --oneline -- toc.txt
 ```
 
-- To restore the file we have to look at the parent of the latest commit (before it was deleted)\
-- Then we commit the file (which will show in the staging area)
+To restore the file we have to look at the parent of the latest commit (before it was deleted).
+
+Then we commit the file (which will show in the staging area)
 
 ```
 git checkout a70r52 toc.txt
