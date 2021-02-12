@@ -517,7 +517,7 @@ git checkout a70r52 toc.txt
 git commit -m "Restore toc.txt"
 ```
 
-### Finding the author of Line using blame
+### Finding the author of a line using blame
 
 To find the author of a particular line
 
@@ -529,4 +529,50 @@ git blame -e audience.txt
 
 # to list only first 3 lines that were changed
 git blame -L 1,3 audience.txt
+```
+
+### Tagging
+
+We use tags to bookmark certain points in the history of our project
+
+To give a lightweight tag to commit that HEAD is pointed to:
+
+```
+git tag v1.0
+```
+
+For specific commit just add the commit id:
+
+```
+git tag v0.7 c389d4
+```
+
+Then we can reference a commit using its tag, exactly the same we use a commit id
+
+```
+git checkout v1.0
+```
+
+Annotative tag (preferred):
+
+```
+git tag -a v1.1 -m "a message associated with this annotative tag"
+```
+
+To see the message associated with a tag:
+
+```
+git tag -n
+```
+
+To see more info about the tag as well full details of commmit:
+
+```
+git show v1.1
+```
+
+To delete a tag:
+
+```
+git tag -d v1.1
 ```
