@@ -248,16 +248,23 @@ To list all the files and directories stored in a commit:
 
 ### Unstaging files
 
-In the past people used to use `git reset` but it was confusing with flags like `--hard` or `--soft`, but now we use:
+In the past people used `git reset` but it was confusing with flags like `--hard` or `--soft`, but now we use `git restore`
+
+In single or multiple files:
 
 ```
-# single or multiple files
 git restore --staged fileName1.js fileName2.js
+```
 
-# all files in staging area
+For all files in staging area:
+
+```
 git restore --staged .
+```
 
-# all files in working area (local)
+For all files in working area (local):
+
+```
 git restore .
 ```
 
@@ -266,13 +273,17 @@ git restore .
 
 ### Discarding local changes
 
-For new untracked files `git reset` will not work for new files, because a record of it doesn't exist anywhere in our environments. So instead we use the `clean` command
+For new untracked files `git reset` will NOT WORK for new files, because a record of it doesn't exist anywhere in our environments. So instead we use the `clean` command
+
+To remove all untracked files, including directories forcefully:
 
 ```
-# to remove all untracked files, including directories forcefully
 git clean -fd
+```
 
-# to get interactive menu before cleaning
+To get interactive menu before cleaning:
+
+```
 git clean -i
 ```
 
@@ -364,21 +375,31 @@ git config --global alias."log --pretty=format:'%an committed %h'"
 
 ### Viewing a commit
 
+Go to the HEAD (last commit) and then go 2 steps back
+
 ```
-# go to the HEAD (last commit) and then go 2 steps back
 git show HEAD~2
+```
 
-# if we want to see the final version of a file in a commit
+If we want to see the final version of a file in a commit
+
+```
 git show HEAD~2:path/to/file.txt
+```
 
-# see all files that have been added, removed or modified in a commit
+See all files that have been added, removed or modified in a commit
+
+```
 git show HEAD~2 --name-only
+```
 
-# see all files that have been added, removed or modified in a commit and see that status marked
+See all files that have been added, removed or modified in a commit and see that status marked
+
+```
 git show HEAD~2 --name-status
 ```
 
-### Viewing the changes across commits
+## Viewing the changes across commits
 
 If we want to see what has been changed in every file over last 3 commits
 
@@ -390,7 +411,6 @@ If we want to see what has been changed in a single file over last 3 commits
 
 ```
 git diff HEAD~2 HEAD specificFile.txt
-
 ```
 
 We can also add flags like `--name-status` and `--name-only` to view the list of files that have been changed
