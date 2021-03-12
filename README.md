@@ -596,3 +596,62 @@ To delete a tag:
 ```
 git tag -d v1.1
 ```
+
+## Branching
+
+A branch in git is just a pointer to a commit - the Master branch is just a pointer to the last commit in the main line of work
+
+- As we make new commits git moves this pointer forward automatically (and stores this latest snapshot)
+- When we create a new branch git creates a new pointer that can be moved around
+  - Git moves this pointer forward with new commits as well (while Master pointer stays where it is)
+- This pointer is just a tiny file that contains a 40-byte commit id
+- HEAD is a special pointer which contains a nmae of a branch (like Master)
+  - When we switch to a different branch git moves the HEAD switches around and writes the name of the target branch (current one we are working on)
+
+### Working with branches
+
+To create a new branch called "bugfix":
+
+```
+git branch bugfix
+```
+
+To see list of all branches:
+
+```
+git branch
+```
+
+- The asterisk (\*) indicates what branch we are currently on
+
+To switch branches there are 2 methods:
+
+```
+git checkout bugfix
+
+git switch bugfix
+```
+
+- `git switch` is more preferred these days because `checkout` was confusing
+
+To rename a branch:
+
+```
+git branch -m bugfix bugfix/signup-form
+```
+
+- a yellow marker in zsh by our branhc indicates that our branch is dirty (has some untracked changes)
+
+To view commits across all branches:
+
+```
+git log --oneline --all
+```
+
+To delete a branch:
+
+```
+git branch -d bugfix/signup-form
+```
+
+- use -D (capital D) to force the deletion, otherwise git will stop us wihout merging it
