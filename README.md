@@ -655,3 +655,93 @@ git branch -d bugfix/signup-form
 ```
 
 - use -D (capital D) to force the deletion, otherwise git will stop us wihout merging it
+
+### Comparing branches
+
+To find out what changes are coming in from another branch (in this case from bugfix to master):
+
+```
+git log master..bugfix/singup-form
+```
+
+To see actual changes:
+
+```
+git diff  master..bugfix/singup-form
+
+_ more concise way _
+git diff bugfix/singup-form
+git diff bugfix/signup-form --name-status
+```
+
+### Stashing
+
+If we have local changes in our working directory that we haven't committed yet, these changes would get lost
+
+- In this situation git doesn't allow us to switch branches
+- We will get warning
+
+```
+error: Your local changes to the following files would be overwritten by checkout:
+	audience.txt
+Please commit your changes or stash them before you switch branches.
+Aborting
+```
+
+In situations where we don't want to commit our changes yet then we should stash our changes
+
+- stores our uncommitted in a safe place
+- Won't be part of our history
+- Will show up as green number count on command line
+
+```
+git stash push -m "New tax rules."
+```
+
+To include new files that we add we have to use the --all (-a) option
+
+```
+git stash push -am "New stash message."
+```
+
+View all stashes:
+
+```
+git stash list
+```
+
+- Each stash has a unique identifier: stash @ {index}
+
+To see changed in our stash compared to our working directory:
+
+```
+git stash show stash@{1}
+
+_ shorter way _
+git stash show 1
+```
+
+To apply changes from one of our stashes to our working directory:
+
+```
+git stash apply 1
+```
+
+Afterward to clean things up, we should delete the stash:
+
+```
+git stash drop 0
+```
+
+To delete all stashes:
+
+```
+git stash clear
+```
+
+### Merging
+
+2 types of merges:
+
+- Fast-forward merges: if branches have not diverged and there is a direct linear path then git just brings Master pointer forward
+- 3-way merges: when branches diverge git needs to reference 3 commit points (common ancestor, Master tip, new branch tip) creating new Merge Commit
