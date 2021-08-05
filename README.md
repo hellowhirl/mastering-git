@@ -605,8 +605,8 @@ A branch in git is just a pointer to a commit - the Master branch is just a poin
 - When we create a new branch git creates a new pointer that can be moved around
   - Git moves this pointer forward with new commits as well (while Master pointer stays where it is)
 - This pointer is just a tiny file that contains a 40-byte commit id
-- HEAD is a special pointer which contains a nmae of a branch (like Master)
-  - When we switch to a different branch git moves the HEAD switches around and writes the name of the target branch (current one we are working on)
+- HEAD is a special pointer which is another tiny file that contains a name of current target branch (like Master)
+  - When we switch to a different branch git moves the HEAD pointer around and updates the tiny file with the name of the target branch (current one we are working on)
 
 ### Working with branches
 
@@ -616,10 +616,16 @@ To create a new branch called "bugfix":
 git branch bugfix
 ```
 
-To see list of all branches:
+To see what branch we are currently working on:
 
 ```
-git branch
+git status
+```
+
+To see list of all local and remote branches:
+
+```
+git branch -a
 ```
 
 - The asterisk (\*) indicates what branch we are currently on
@@ -640,9 +646,9 @@ To rename a branch:
 git branch -m bugfix bugfix/signup-form
 ```
 
-- a yellow marker in zsh by our branhc indicates that our branch is dirty (has some untracked changes)
+- a yellow marker in zsh by our branch indicates that our branch is dirty (has some untracked changes)
 
-To view commits across all branches:
+To view commits across all branches use the `--all` option:
 
 ```
 git log --oneline --all
@@ -654,7 +660,7 @@ To delete a branch:
 git branch -d bugfix/signup-form
 ```
 
-- use -D (capital D) to force the deletion, otherwise git will stop us wihout merging it
+- use `-D` (capital D) to force the deletion, otherwise if the changes aren't merged upstream yet then it git will stop us
 
 ### Comparing branches
 
