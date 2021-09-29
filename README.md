@@ -217,18 +217,25 @@ git log --oneline
 
 ### Viewing a commit
 
-2 ways to reference a commit (and see differences)
+There are 2 ways to reference a commit (and see differences)
 
-```
-# by unique identifier, shorter if they are unique characters:
-git show d64723
+- by unique identifier, shorter if they are unique characters:
 
-# HEAD pointer, view last commit
-git show HEAD
-# previous commits using tilde and how many steps we want to go back
-git show HEAD~1
+  ```
+  git show d64723
+  ```
 
-```
+- by HEAD pointer, view last commit:
+
+  ```
+  git show HEAD
+  ```
+
+- previous commits using tilde and how many steps we want to go back
+
+  ```
+  git show HEAD~1
+  ```
 
 To see exact version of file that is stored in a commit:
 
@@ -239,7 +246,7 @@ git show HEAD~1:.gitignore
 To list all the files and directories stored in a commit:
 
 ```
- git ls-tree HEAD~6
+git ls-tree HEAD~6
 ```
 
 - `ls-tree` means list all the files in a tree
