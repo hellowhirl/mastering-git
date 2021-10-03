@@ -151,7 +151,7 @@ Remember: .gitignore only works like this if we haven't already included a file 
 - In this case git is not going to ignore the changes in this directory because it's already tracking this directory
 - To solve this problem we have to remove this file ONLY from the staging area which is what we will be propssing for the next commit
 
-  - for the `--cached` flag we we see it only removes from the "index", which is the old term for "staging area"
+  - for the `--cached` flag we see it only removes from the "index", which is the old term for "staging area"
 
     ```
     git rm --cached -r bin/
@@ -219,19 +219,19 @@ git log --oneline
 
 There are 2 ways to reference a commit (and see differences)
 
-- by unique identifier, shorter if they are unique characters:
+1\) by unique identifier, shorter if they are unique characters:
 
-  ```
-  git show d64723
-  ```
+```
+git show d64723
+```
 
-- by HEAD pointer, view last commit:
+2\) by HEAD pointer, view last commit:
 
-  ```
-  git show HEAD
-  ```
+```
+git show HEAD
+```
 
-- previous commits using tilde and how many steps we want to go back
+- specify previous commits using tilde and how many steps we want to go back
 
   ```
   git show HEAD~1
@@ -317,7 +317,6 @@ git log ---stat
 
 # shortened
 git log --oneline --stat
-
 ```
 
 To see what has been changed for each file in a commit:
