@@ -255,7 +255,7 @@ git ls-tree HEAD~6
 
 ### Unstaging files
 
-In the past people used `git reset` but it was confusing with flags like `--hard` or `--soft`, but now we use `git restore`
+In the past people used `git reset` but it was confusing with flags like `--hard` or `--soft`, but now we use `git restore` to unstage files
 
 In single or multiple files:
 
@@ -622,6 +622,12 @@ To create a new branch called "bugfix":
 git branch bugfix
 ```
 
+To see list of branches:
+
+```
+git branch
+```
+
 To see what branch we are currently working on:
 
 ```
@@ -670,19 +676,29 @@ git branch -d bugfix/signup-form
 
 ### Comparing branches
 
-To find out what changes are coming in from another branch (in this case from bugfix to master):
+- As we commit to our branches, we need to know how they are diverging from master
+- At some point in the future we are going to merge the bugfix branch into master
+
+To find out what commits are coming in from another branch (in this case from bugfix to master):
 
 ```
-git log master..bugfix/singup-form
+git log master..bugfix/signup-form
 ```
 
-To see actual changes:
+To see the actual changes:
 
 ```
-git diff  master..bugfix/singup-form
+git diff master..bugfix/signup-form
 
-_ more concise way _
-git diff bugfix/singup-form
+// more concise way*
+git diff bugfix/signup-form
+```
+
+\*remove `master..` which just refers to current branch
+
+To just see what files are going to be affected:
+
+```
 git diff bugfix/signup-form --name-status
 ```
 
