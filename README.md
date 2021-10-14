@@ -616,6 +616,8 @@ A branch in git is just a pointer to a commit - the Master branch is just a poin
 
 ### Working with branches
 
+When we switch branches Git resets our working directory to the snapshot stored in the last commit of the target branch
+
 To create a new branch called "bugfix":
 
 ```
@@ -719,14 +721,16 @@ Aborting
 In situations where we don't want to commit our changes yet then we should stash our changes
 
 - stores our uncommitted in a safe place
-- Won't be part of our history
-- Will show up as green number count on command line
+- won't be part of our history
+- will show up as green number count on command line
 
 ```
 git stash push -m "New tax rules."
 ```
 
 To include new files that we add we have to use the --all (-a) option
+
+- By default new files will not be included in a stash
 
 ```
 git stash push -am "New stash message."
@@ -745,7 +749,7 @@ To see changed in our stash compared to our working directory:
 ```
 git stash show stash@{1}
 
-_ shorter way _
+// shorter way
 git stash show 1
 ```
 
@@ -771,5 +775,7 @@ git stash clear
 
 2 types of merges:
 
-- Fast-forward merges: if branches have not diverged and there is a direct linear path then git just brings Master pointer forward
-- 3-way merges: when branches diverge git needs to reference 3 commit points (common ancestor, Master tip, new branch tip) creating new Merge Commit
+- Fast-forward merges: if branches have not diverged and there is a direct linear path then git just brings Master pointer forward to the latest commit of the branch that is ahead
+  - When the merge operation is complete then the pointer is removed for the branch that we merged into the main branch
+- 3-way merges: when branches diverge Git needs to reference 3 commit points: common ancestor, tip of Master, tip of new branch
+  - based on these points GIt will figure out a way to combine all the changes and will create a new Merge Commit
