@@ -728,9 +728,10 @@ In situations where we don't want to commit our changes yet then we should stash
 git stash push -m "New tax rules."
 ```
 
-To include new files that we add we have to use the --all (-a) option
+To include new files that we add we have to use the --all (-a) option.
 
 - By default new files will not be included in a stash
+- We can combine -a and -m as -am
 
 ```
 git stash push -am "New stash message."
@@ -779,3 +780,51 @@ git stash clear
   - When the merge operation is complete then the pointer is removed for the branch that we merged into the main branch
 - 3-way merges: when branches diverge Git needs to reference 3 commit points: common ancestor, tip of Master, tip of new branch
   - based on these points GIt will figure out a way to combine all the changes and will create a new Merge Commit
+
+### Fast-forward merging
+
+The --graph option gives us a better idea on how our braches have diverged. Always better to include it:
+
+```
+git log --oneline --all --graph
+```
+
+- if we can see a linear path then we can e.g. get directly from a branch to master
+
+Create a new branch and then switch to it:
+
+```
+git switch -C bugfix/login-form
+```
+
+### No fast-forward merging
+
+from master branch
+
+```
+git merge --no-ff bugfix/login-form
+```
+
+- this tells git: even if fast-forward merge is possible, don't do it
+- instead, create a merge commit that combines all the changes in the target branch and bring them into master
+- it will bring up an autoamted merge commit message, which is usually fine
+
+Pros and Cons of merge commits:
+
+- Pros:
+  - they are true refletion of history
+  - make it easier to undo a feature (just a single commit to revert, as opposed to multiple)
+- Cons:
+  - pollutes the history and the linear history view is lost
+
+To disable fast-forward merges in current repository:
+
+```
+git config ff no
+```
+
+To disable fast-forward merges globally:
+
+```
+git config --global ff no
+```
