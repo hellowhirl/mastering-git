@@ -828,3 +828,17 @@ To disable fast-forward merges globally:
 ```
 git config --global ff no
 ```
+
+### 3-Way merges
+
+- When two branches diverge Git is going to look at the commit tips of both branches and compare them with their common ancestor
+  - we can see this visually with the `--graph` option using `git log`
+- Git is going to figure out how to merge or combine the changes into a new merge commit
+
+```
+git merge feature/change-password
+```
+
+- usually we can accept the deault merge commit message as it is
+- when we look at our history again we can see the result of the merge
+  - our master branch has moved up and is pointing to a new merge commit
