@@ -861,3 +861,23 @@ To return list of branches that have not been merged into the current branch:
 ```
 git branch --no-merged
 ```
+
+### Merge conflicts
+
+Cases when Git cannot figure out how to merge changes:
+
+- Change1, Change2 (same line of code has been changed in 2 branches)
+- Changed, Deleted (a file)
+- Add1, Add2 (same file name but different contents)
+
+When we merge a branch with a conflict into our current branch we will see the message:
+
+`CONFLICT (content): Merge conflict in foobar.txt`
+
+- Git will stop the merge process and then we will have to manually combine the changes
+- `Unmerged paths:` will show us the conflicted files
+- Use VS Code's merge conflict tool or edit lines of code manually
+- We should not introduce any new lines of code when fixing a merge conflict
+  - This is called an `evil commit`
+  - The whole point of a merge commit is to combine changes across 2 branches
+  - However, there are real word situations where you need to introduce some new changes to make things work
