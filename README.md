@@ -842,3 +842,22 @@ git merge feature/change-password
 - usually we can accept the deault merge commit message as it is
 - when we look at our history again we can see the result of the merge
   - our master branch has moved up and is pointing to a new merge commit
+
+### Viewing merged and unmerged branches
+
+- When we are done with a branch, typically we should merge into master and then delete it
+  - We may forget about some branches we forgot to delete, and these branches/pointers become stale, creating confusion in the future
+
+To view list of branches that we have already merged into the current branch (most often it's master):
+
+```
+git branch --merged
+```
+
+- any branches showing here should be deleted
+
+To return list of branches that have not been merged into the current branch:
+
+```
+git branch --no-merged
+```
