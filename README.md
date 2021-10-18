@@ -881,3 +881,45 @@ When we merge a branch with a conflict into our current branch we will see the m
   - This is called an `evil commit`
   - The whole point of a merge commit is to combine changes across 2 branches
   - However, there are real word situations where you need to introduce some new changes to make things work
+
+### Graphical merge tools
+
+Merge tools\*:
+
+- Kdiff
+- P4Merge
+
+\* Powerful IDE's like IntelliJ and GitKraken don't require 3rd party merge tools
+
+To set our default merge tool to P4Merge:
+
+```
+git config --global merge.tool p4merge
+```
+
+To tell Git where to find P4Merge:
+
+```
+git config --global mergetool.p4merge.path "/Applications/p4merge.app/Contents/MacOS/p4merge
+```
+
+To edit a conflict using our external merge tool:
+
+```
+git mergetool
+```
+
+We will see these 3 branches:
+
+- REMOTE: target branch (incoming change) which is our bugfix branch
+- BASE: the original verison (version of file before our branches diverged)
+- LOCAL: current branch (in most cases it's master)
+
+A merge tool like P4Merge let's us visually see the changes
+
+- the pane on the bottom shows us how the changes will get combined
+- we can use purple and green icons to choose which change we want to keep
+  - hold down shift and we can keep both changes as well
+- Browse through other conflicts in the merge by using the red arrows above
+- When we are done we need to save the changes, then go back to terminal and then `git commit` (without message)
+  - accept the default commit message, then we have succesffully merged our branches
