@@ -737,6 +737,12 @@ To include new files that we add we have to use the --all (-a) option.
 git stash push -am "New stash message."
 ```
 
+To stash away all unstaged changes:
+
+```
+git stash push -u
+```
+
 View all stashes:
 
 ```
