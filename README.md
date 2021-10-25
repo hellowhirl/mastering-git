@@ -929,3 +929,14 @@ A merge tool like P4Merge let's us visually see the changes
 - Browse through other conflicts in the merge by using the red arrows above
 - When we are done we need to save the changes, then go back to terminal and then `git commit` (without message)
   - accept the default commit message, then we have succesffully merged our branches
+
+### Aborting a merge
+
+- When doing a merge we may run into 1 or more conflicts
+- When we start a merge we may not have enough time to resolve all the conflicts
+
+To go to the previous state before the merge:
+
+```
+git merge --abort
+```
