@@ -460,11 +460,13 @@ Tell git where we know a bad commit is (at the current position, HEAD)
 git bisect bad
 ```
 
-Also tell Git where there is a good commit
+Also tell Git where there is a good commit (can be anywhere, but a commit ID that is more recent will require fewer steps).
 
 ```
 git bisect good cj9025
 ```
+
+- If we are not sure where to start then running `git checkout __commitID__` can help us find a good commit
 
 This will take us to the middle of the commit history.
 
