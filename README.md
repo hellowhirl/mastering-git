@@ -225,17 +225,17 @@ There are 2 ways to reference a commit (and see differences)
 git show d64723
 ```
 
-2\) by HEAD pointer, view last commit:
+2\) by HEAD pointer, view last commit\*:
 
 ```
 git show HEAD
 ```
 
-- specify previous commits using tilde and how many steps we want to go back
+\* we can specify previous commits using tilde and how many steps we want to go back
 
-  ```
-  git show HEAD~1
-  ```
+```
+git show HEAD~1
+```
 
 To see exact version of file that is stored in a commit:
 
@@ -942,3 +942,57 @@ To go to the previous state before the merge:
 ```
 git merge --abort
 ```
+
+### Undoing a faulty merge
+
+- In situations where we don't combine the changes properly, we need to undo the merge and then remerge. We have 2 options:
+
+1\) Remove the merge commit (as if it was never there)
+
+```
+git reset --hard HEAD~1
+```
+
+- HEAD then points to previous commit (on master in this case)
+- `HEAD~1` means 1 commit before the last commit
+- if we run `git log` then we will see that the merge commit is no longer in the history; however, it is still in our repository. If we make a note of its commitID then We can recover it with:
+
+```
+git reset --hard __commitID__
+```
+
+When resetting the HEAD pointer we have 3 options
+
+`--soft`
+
+- Git will have the HEAD pointer point to a different snapshot, but our working directory and staging area are not affected
+
+`--mixed`
+
+- Git will take that snapshot and put it in the staging area as well (local changes in our working directory will stay there)
+- this is the default option, so we don't need to specify it
+
+`--hard`
+
+- All environments are going to look identical (the state we were in before we started the merge)
+- Git will take that snapshot and put it in our working directory as well (in addition to staging area and last snapshot)
+
+- be careful as this will rewrite history)
+- rewriting history is ok if the history is local in our repository
+- but if we have shared our commits with other team members or it's on a remote repository then we shouldn't rewrite history
+
+2\) Revert the merge commit
+
+- this approach creates a new commit that will cancel all the changes in faulty merge commit
+- especially applies if we have shared our history with someone else
+
+A merge commit has 2 parents. To revert this commit we have to tell Git how we want to revert the changes
+
+```
+git revert -m 1 HEAD
+```
+
+- the `-m 1` option specifies the first parent of a merge commit (usually that is the master branch)
+- `HEAD` is the target commit (which is the last/current commit - our merge commit)
+- it's fine to accept the deault commit message
+- if we check our history we will see a new 'Revert "Merge branch ...` commit
