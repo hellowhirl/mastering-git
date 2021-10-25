@@ -996,3 +996,34 @@ git revert -m 1 HEAD
 - `HEAD` is the target commit (which is the last/current commit - our merge commit)
 - it's fine to accept the deault commit message
 - if we check our history we will see a new 'Revert "Merge branch ...` commit
+
+### Squash merging
+
+- In the case when we don't have good quality commits
+- Create a new commit that combines all the changes in a bugfix branch (represents single logical commit that represents all the changes)
+- A squash commit is not a merge commmit because it doesn't have 2 parents
+- We are then left with a single and clean linear history (we can also delete the bugfix branch)
+- Squash mergers should only be used with small, short-lived branches with bad history (bugfixes, quick features, etc.)
+
+From our main branch:
+
+```
+git merge --squash bugfix/photo-upload
+```
+
+- Git will create a squash commit with all the changes combined
+- but there is no commit message yet; these changes will still be in the staging area
+- next create a commit message that is meaningful and summarizes all the changes in our bugfix branch
+
+```
+git commit -m "Something meaningful"
+```
+
+- If we check git log then we will see our bugfix trailing off
+- When we check `git branch --no-merged` then we will see this branch still remaining, which is confusing
+  - this is because we do not have a merge commit that connects our bugfix branch
+- Be sure te delete our squashed branch:
+
+```
+git branch -D bugfix/photo-upload
+```
