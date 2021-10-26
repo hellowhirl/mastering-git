@@ -1027,3 +1027,66 @@ git commit -m "Something meaningful"
 ```
 git branch -D bugfix/photo-upload
 ```
+
+- if there are any conflicts before the merge then resolve as usual
+
+### Rebasing
+
+- This is another tehcnique to bring changes from one branch to another for when our history gets long and complicated
+- Allows us to do a fast forward merge from master into new branch
+- Rebasing rewrites history
+  - ok for local changes
+  - otherwise if working with shared branches in a team, it can create a big mess
+  - Git will create new commits that resemble the changes on our other feature branch
+  - this can get messed up if other team members push their code on top of that; their history would be lost
+
+First we switch to our target branch, then we tell Git to change the base of this other branch to the last (latest) commit on master:
+
+```
+git switch feature/shopping-cart
+
+git rebase master
+```
+
+- most of the time in the real world, we will end up with conflicts
+- if we succesfully rebase and decide to merge then Git will do a fast-forward merge to bring the master pointer upward
+
+```
+git switch master
+
+git merge feature/shopping-cart
+```
+
+When we have a merge conflict upon rebase we can use our merge tool:
+
+```
+git mergetool
+
+// fix the conflicts
+
+git rebase --continue
+```
+
+Other options:
+
+`--skip`
+
+- skips the current commit and move on to next commit (when we don't care about a conflict)
+
+`--abort`
+
+- when we don't have enough time to resolve conflicts we can just abort the rebase here (takes us back to previous state before we started rebasing)
+
+Afterward we may see an extra file like 'toc.txt.orig' created by P4Merge. To remove it we can use `git rm` or this command\*:
+
+```
+git clean -fd
+```
+
+\* assuming we don't have any other untracked files that we want to add to our repository
+
+For the future, in order to prevent our merge tool from adding these types of files:
+
+```
+git config --global mergetool.keepBackup false
+```
