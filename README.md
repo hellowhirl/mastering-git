@@ -1090,3 +1090,17 @@ For the future, in order to prevent our merge tool from adding these types of fi
 ```
 git config --global mergetool.keepBackup false
 ```
+
+### Cherry picking
+
+Situation: when some change in another branch has some interesting changes that we want to have in master, but we are not quite ready to merge our feature branch into master
+
+- take a particular commit and apply it on top of master
+
+From the master branch we can take a commitID from another feature branch
+
+```
+git cherry-pick __commitID__
+```
+
+- when we check our git log we can see that master has moved forward and we have cherry picked the commit from the feature branch
