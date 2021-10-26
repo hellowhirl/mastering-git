@@ -791,13 +791,13 @@ git stash clear
 
 ### Fast-forward merging
 
+If we can see a linear path then we can (e.g. get directly from a branch to master) then Git will fast-forward automatically when we merge
+
 The --graph option gives us a better idea on how our braches have diverged. Always better to include it:
 
 ```
 git log --oneline --all --graph
 ```
-
-- if we can see a linear path then we can e.g. get directly from a branch to master
 
 Create a new branch and then switch to it:
 
@@ -1124,4 +1124,4 @@ git restore --source=feature/send-email -- toc.txt
 - we can use GitLens plugin
 - if we name our branches `bugfix/something` or `feature/something` then GitLens will automatically create folders for us
 - the extension Git Graph will allow us to see our branches in a graph
-  - we can access it in the source control panel, under a new icon that resembles a graph
+  - we can access it in the source control panel, under a new icon that resembles a graph (it's beautiful)
