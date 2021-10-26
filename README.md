@@ -1104,3 +1104,24 @@ git cherry-pick __commitID__
 ```
 
 - when we check our git log we can see that master has moved forward and we have cherry picked the commit from the feature branch
+
+### Picking files from another branch
+
+Situation: when we are only interested in bringing in a single from another branch rather than an entire commit
+
+To bring the toc.txt file to our master branch, first switch to master then:
+
+```
+git restore --source=feature/send-email -- toc.txt
+```
+
+- this is similar to restoring a file to an earlier version (in this case we are specifying a branch name)
+- \-- lets Git know that this is a file name
+- then commit the change to the master branch
+
+### Branching in VS Code
+
+- we can use GitLens plugin
+- if we name our branches `bugfix/something` or `feature/something` then GitLens will automatically create folders for us
+- the extension Git Graph will allow us to see our branches in a graph
+  - we can access it in the source control panel, under a new icon that resembles a graph
