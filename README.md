@@ -632,16 +632,16 @@ To see list of branches:
 git branch
 ```
 
-To see what branch we are currently working on:
-
-```
-git status
-```
-
 To see list of all local and remote branches:
 
 ```
 git branch -a
+```
+
+To see what branch we are currently working on:
+
+```
+git status
 ```
 
 - The asterisk (\*) indicates what branch we are currently on
@@ -1125,3 +1125,29 @@ git restore --source=feature/send-email -- toc.txt
 - if we name our branches `bugfix/something` or `feature/something` then GitLens will automatically create folders for us
 - the extension Git Graph will allow us to see our branches in a graph
   - we can access it in the source control panel, under a new icon that resembles a graph (it's beautiful)
+
+### Workflows
+
+Centralized workflow
+
+- colloborators can push/pull changes into central repostiory to be in sync
+- everyone has push access to write to the central repository (most common)
+
+Integration-manager
+
+- someone is in charge of integrating changes
+- for open source projects
+- 1 or more maintainers and many contributors
+- only maintainers have push/write access
+- outsiders cannot push to official repository so that's why we have to fork it to get a copy in the cloud
+  - because forked repo is in the clould it is also visible to the maintainer of the project, and that is how they can pull in our changes
+
+If we want to contribute then follow these steps:
+
+1. fork repo to get a copy of it in the cloud
+2. clone the forked repostiory to get a local copy on our machine
+3. make a few commits and then push our work to our forked repostiory
+4. send pull request to maintainer of the project
+5. maintainer then pulls in our changes and reviews them
+6. if changes are good then they can merge our work into their local repository
+7. finally they can push the merge changes into the official repostiory
