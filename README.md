@@ -1151,3 +1151,40 @@ If we want to contribute then follow these steps:
 5. maintainer then pulls in our changes and reviews them
 6. if changes are good then they can merge our work into their local repository
 7. finally they can push the merge changes into the official repostiory
+
+### GitHub repositories
+
+- When we select README file then GitHub will create the first commit for us (handy)
+- Even though a repo is public, only the repo owner can push/write to it
+
+To give others push access to our repository:
+
+- Go to repo Settings -> Manage Access -> Invite a Collaborator
+
+### Cloning a repository
+
+```
+git clone git@github.com:hellowhirl/react-seconds-counter-game.git AlternativeProjectName
+```
+
+- we can change the name of the project folder in our local by specifying at the end like "AlternativeProjectName"
+
+When we look at our git log we will notice these 2 pointers: `origin/main` and `origin/HEAD`
+
+- when we clone a repository GIt names the source repository (the one on GitHub) as `origin`
+- `origin/master` tells us where is the master branch in that repository (on GitHub)
+  - useful because we can start to have multiple repositories that can evolve independently
+  - techincally this is what we call a `remote tracking branch`: cannot check it out or commit to it
+- `origin/HEAD` tells us where is HEAD pointer in our origin repository
+
+To see the list of remote repositories (repos that are not on our machine/current directory):
+
+```
+git remote
+```
+
+To see more details about remote repository we can use the verbose option:
+
+```
+git remote -v
+```
