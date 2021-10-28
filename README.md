@@ -1188,3 +1188,32 @@ To see more details about remote repository we can use the verbose option:
 ```
 git remote -v
 ```
+
+### Fetching
+
+To download new commits from the remote repository\*:
+
+```
+git fetch origin
+```
+
+- moves origin/master forward
+- even though we have downloaded a new commit, our working directory is not updated
+- \* if we leave out `origin` then Git assumes that we want to fetch commits from origin anyway: `git fetch`
+
+To bring in new changes from origin/master, we have to merge into master:
+
+```
+git merge origin/master
+```
+
+- if we have a direct linear path then we will have a fast forward merge
+- on the other hand, if we have a conflict then we would have to resolve it
+
+To see how our remote and local branches are diverging:
+
+```
+git branch --vv
+```
+
+- shows the branches that are linked and if it is behind by a # of commits
