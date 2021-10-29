@@ -1217,3 +1217,26 @@ git branch --vv
 ```
 
 - shows the branches that are linked and if it is behind by a # of commits
+
+### Pulling
+
+Most of the the time when we want to bring the changes from remote repo into our local we need to do a `fetch + merge`
+
+- we can combine these with a `pull`
+
+In the situation where our local branch has diverged from the remote, we can replay our local changes on top of the changes in origin/master
+
+When our branches have diverged Git is going to download a new commit from the remote and put it into our local repository
+
+```
+git pull
+```
+
+When our branches have diverged Git can perform a 3-way merge to bring the remote changes into our master branch
+
+```
+git pull --rebase
+```
+
+- this will give us simple linear history
+- in this situation we also have the option to do a rebase instead, which will create a merge commit
