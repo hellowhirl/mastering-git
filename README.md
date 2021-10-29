@@ -1,6 +1,6 @@
 # Mastering-git
 
-Notes for mastering git from cli and gui
+Notes for mastering Git from cli and gui
 
 ## Basics
 
