@@ -1220,23 +1220,40 @@ git branch --vv
 
 ### Pulling
 
-Most of the the time when we want to bring the changes from remote repo into our local we need to do a `fetch + merge`
+Most of the the time when we want to bring the changes from remote repo into our local we need to do a `fetch merge`
 
-- we can combine these with a `pull`
-
-In the situation where our local branch has diverged from the remote, we can replay our local changes on top of the changes in origin/master
-
-When our branches have diverged Git is going to download a new commit from the remote and put it into our local repository
+- we can combine these two commands with a `pull`
+- when our branches have diverged Git is going to download a new commit from the remote and put it into our local repository
+- In this situation our local branch has diverged from the remote. So, Git will then perform a 3-way merge (creating a merge commit) to bring the remote changes into our master branch:
 
 ```
 git pull
 ```
 
-When our branches have diverged Git can perform a 3-way merge to bring the remote changes into our master branch
+will give us non-linear history:
+
+```
+*   c9628cc (HEAD -> main) Merge branch 'main' of github.com:hellowhirl/mastering-git into main
+|\
+| * 49e0e21 (origin/main, origin/HEAD) Update README for demonstrating pull command
+* | d389423 WIP - about pulling
+|/
+* a256ed4 fetching
+```
+
+Alternatively we can use rebasing (which approach is better depends):
 
 ```
 git pull --rebase
 ```
 
-- this will give us simple linear history
-- in this situation we also have the option to do a rebase instead, which will create a merge commit
+will give us linear history:
+
+```
+* d0409a1 (HEAD -> main) WIP - about pulling
+* 49e0e21 (origin/main, origin/HEAD) Update README for demonstrating pull command
+* a256ed4 fetching
+```
+
+- Git is going to change the base of our master and move it up a commit(s).
+  - it is replaying our local changes on top of the changes made by others in origin/master
