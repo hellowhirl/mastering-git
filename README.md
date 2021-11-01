@@ -1319,3 +1319,19 @@ To remove tag from origin
 ```
 git push origin --delete v1.0
 ```
+
+### Releases
+
+- On GitHub we can create a release to package our software along with source code, binary files and release notes
+
+  - this is a high level feature built on top of tags
+
+Creating a new release:
+
+- when we creat a release GitHub will automatically add our tag to the latest commit
+- select target branch (like master)
+- add a title (can be same as tag name like v1.0)
+- in the Write section we can add our release notes, and using hyphens (-) we can add bullet points (Markdown syntax)
+- if the release is not production ready then we can tick "This is a pre-release"
+- Click "Publish release" when ready
+- we can also edit or delete a release on the release page
