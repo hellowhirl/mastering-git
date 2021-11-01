@@ -1213,7 +1213,7 @@ git merge origin/master
 To see how our remote and local branches are diverging:
 
 ```
-git branch --vv
+git branch -vv
 ```
 
 - shows the branches that are linked and if it is behind by a # of commits
@@ -1335,3 +1335,40 @@ Creating a new release:
 - if the release is not production ready then we can tick "This is a pre-release"
 - Click "Publish release" when ready
 - we can also edit or delete a release on the release page
+
+### Sharing branches
+
+- our branches are private (local) by default
+- to collobrate with others using a branch then we have to explicitly push that branch (same as we do for tags)
+
+If we create a branch from our local with `git switch -C feature/testing` and then `git push` we will see:
+
+```
+fatal: The current branch feature/testing has no upstream branch.
+```
+
+- this branch is not linked to a branch in origin
+
+To see all remote tracking branches:
+
+```
+git branch -r
+```
+
+To link a private branch to a branch in origin:
+
+```
+git push -u origin feature/testing
+```
+
+- `-u` is shorthand for 'set upstream'
+- then type remote branch followed by target branch
+- we can then see that this branch is linked to remote tracking branch with `git branch -vv`
+
+At some point, we will want to remove this branch with:
+
+```
+git push -d origin feature/testing
+```
+
+- we still need to delete the branch from our local with `git branch -d feature/testing`
