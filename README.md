@@ -1300,3 +1300,22 @@ Then to store credentials on the Mac:
 ```
 git config --global credential.helper osxkeychain
 ```
+
+### Sharing tags
+
+By default the push command doesn't transfer our tags to a remote repository.
+
+To explicitly push a tag named "v1.0" to remote:
+
+```
+git push origin v1.0
+```
+
+- if we look on GitHub we can see automatic assets generated for us
+- we can download our entire source code from that point of time (very useful)
+
+To remove tag from origin
+
+```
+git push origin --delete v1.0
+```
