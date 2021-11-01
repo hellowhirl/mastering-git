@@ -1257,3 +1257,24 @@ will give us linear history:
 
 - Git is going to change the base of our master and move it up a commit(s).
   - it is replaying our local changes on top of the changes made by others in origin/master
+
+### Pushing
+
+When our local branch is ahead of origin/master we can push our new commit(s) to origin with:
+
+```
+git push origin master
+```
+
+- if we are on master branch then we can drop master
+- we can also drop origin because Git will assume origin by default
+
+```
+git push
+```
+
+- Sometimes our push may get rejected
+  - DO NOT USE: `git push -f` unless we have screw something up
+  - to fix we first have to do a pull
+  - then do a merge or a rebase
+  - fix any conflicts (if any) and then do a push
