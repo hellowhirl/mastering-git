@@ -1278,3 +1278,25 @@ git push
   - to fix we first have to do a pull
   - then do a merge or a rebase
   - fix any conflicts (if any) and then do a push
+
+### Storing credentials
+
+To push our commits we have to enter our GitHub credentials (username and password). We can store our credentials in memory or on disk and tell Git where to find it
+
+To set a configuration value (for 15 minutes in memory):
+
+```
+git config --global credential.helper cache
+```
+
+To store credenials on Mac disk we should use Keychain on Mac, check if Keychain Helper is installed:
+
+```
+git credential-osxkeychain
+```
+
+Then to store credentials on the Mac:
+
+```
+git config --global credential.helper osxkeychain
+```
