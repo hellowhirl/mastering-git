@@ -1419,3 +1419,6 @@ We can use 'Compare & pull request' or 'New pull request' buttons on GH
 - mark as 'Comment', 'Approve', or 'Request changes'
 - finally 'Merge pull reuest'
   - can be merged by reviewer or or person who started it (depends on culture of team)
+- it is common practice to click 'Delete branch' after merging
+  - if mistake was made we can always click 'Restore branch'
+- clean up our lcoal environment with `git remote prune origin`
