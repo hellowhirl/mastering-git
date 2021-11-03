@@ -1372,3 +1372,36 @@ git push -d origin feature/testing
 ```
 
 - we still need to delete the branch from our local with `git branch -d feature/testing`
+
+### Collaboration workflow
+
+- a new branch was created from GH
+- To get new remote branches (and tags) from origin we run `git fetch`.
+- But when do `git branch` we won't see our new branch.
+- We can only see it with `git branch -r`.
+
+To creat a private branch in our local repository that maps to this remote tracking branch:
+
+```
+git switch -C feature/change-password origin/feature/change-password
+```
+
+- we will then see "Branch 'feature/change-password' set up to track remote branch 'feature/change-password' from 'origin'
+- now we can add new commits to this branch from our machine and then push them to origin
+
+#### The rest of the flow
+
+- after someone else pushes commits to that branch on origin, while on that branch we can pull in their changes with `git pull`.
+  - we can also do `git pull` from master branch periodically
+- merge changes from new feature into master
+- send these changes to GH with `git push`
+
+#### Cleaning up
+
+- we can do `git push -d _____` and `git branch -d _____`
+
+Finally, to remove tracking branches that are not on the remote from our local machine:
+
+```
+git remote prune origin
+```
