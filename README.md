@@ -1405,3 +1405,17 @@ Finally, to remove tracking branches that are not on the remote from our local m
 ```
 git remote prune origin
 ```
+
+### Pull requests
+
+Opening a discussion with the team before merging into master
+
+We can use 'Compare & pull request' or 'New pull request' buttons on GH
+
+- add reviewer(s)
+- (click away from from Review changes button as it's confusing)
+- go back and forth with comments about lines of code
+- write general review comment and then click 'Finish your review'
+- mark as 'Comment', 'Approve', or 'Request changes'
+- finally 'Merge pull reuest'
+  - can be merged by reviewer or or person who started it (depends on culture of team)
