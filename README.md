@@ -431,16 +431,28 @@ HEAD: a special pointer that points to the current branch we are working on
 
 Checkout to attach HEAD pointer to a previous commit:
 
-`git checkout ffbj35 `
+```
+git checkout ffbj35
+```
 
 `detached HEAD` state: when we check out a particular commit the HEAD pointer will move to that commit - HEAD is no longer attached to a branch anymore, and it points to a certain commit.
 
 - In this state we should not create any new commits - only view it (look around) and make experimental changes.
   - If we create a commit in this state then that commit is not reachable by any other commits or pointers (a dead commit); Git would later check for these commits later and remove it to save space
 
-To attach HEAD pointer to the master branch:
+To return from 'detached HEAD' state we can attach HEAD pointer back to the last branch (such as master):
 
-`git checkout master`
+```
+git checkout master
+```
+
+Or, if we are unsure of which branch we have attached from, we can try\*:
+
+```
+git checkout -
+```
+
+\* This also tries to check out your last checked out branch.
 
 ### Finding bugs using Bisect
 
@@ -1125,6 +1137,8 @@ git restore --source=feature/send-email -- toc.txt
 - if we name our branches `bugfix/something` or `feature/something` then GitLens will automatically create folders for us
 - the extension Git Graph will allow us to see our branches in a graph
   - we can access it in the source control panel, under a new icon that resembles a graph (it's beautiful)
+
+## Collaboration
 
 ### Workflows
 
