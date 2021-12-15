@@ -1375,9 +1375,15 @@ To link a private branch to a branch in origin:
 git push -u origin feature/testing
 ```
 
-- `-u` is shorthand for 'set upstream'
+- `-u` is shorthand for `--set-upstream`
 - then type remote branch followed by target branch
 - we can then see that this branch is linked to remote tracking branch with `git branch -vv`
+
+If we want to link the current branch we are working on, just use `HEAD` instead of name of branch:
+
+```
+git push -u origin HEAD
+```
 
 At some point, we will want to remove this branch with:
 
