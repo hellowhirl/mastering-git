@@ -1467,3 +1467,10 @@ We can use 'Compare & pull request' or 'New pull request' buttons on GH
 - From Issues tab, When we click on `[Labels]` we can see all the default labels that exist on every GitHub repo
   - we can edit these as we please
 - We can also create new labels with a color of our liking (randomly generated)
+
+### Milestones
+
+- used to track the progress of various issues
+  - add some issues to a milestone and then see how much we have progressed towards that milestone
+- From Issues tab we can create a milestone with description, set a due date, and then assign it to an issue
+  - when the issue is closed then the % completion will reflect in the milestone
