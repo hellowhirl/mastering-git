@@ -1442,3 +1442,14 @@ We can use 'Compare & pull request' or 'New pull request' buttons on GH
 - it is common practice to click 'Delete branch' after merging
   - if mistake was made we can always click 'Restore branch'
 - clean up our lcoal environment with `git remote prune origin`
+
+### Resolving Conflicts
+
+"This branch has conflicts that must be resolved"
+
+- we can use the coommand line, or the GitHub user interface
+  - on command line: just like before
+  - on GitHub:
+    - delete the markers, make the chnages, then click `[Mark as resolved]`
+    - commit changes onto the target branch (before the merge) and click `[Commit merge]`
+    - Finally we can click `[Merge pull request]`
