@@ -1453,3 +1453,11 @@ We can use 'Compare & pull request' or 'New pull request' buttons on GH
     - delete the markers, make the chnages, then click `[Mark as resolved]`
     - commit changes onto the target branch (before the merge) and click `[Commit merge]`
     - Finally we can click `[Merge pull request]`
+
+### Issues
+
+- Issue tracking goes hand-in-hand with pull requests
+- We can encapsulate all the details (description, images, etc.) in a single place
+- Able to assign people, add labels (including customizing these labels) and assign to a milestone
+- When issue is submitted then we can have a conversation with the team about it
+- We can link the issue to a pull request - so issue will be automatically closed when merge request is successfully merged
