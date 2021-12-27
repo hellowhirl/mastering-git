@@ -1456,8 +1456,14 @@ We can use 'Compare & pull request' or 'New pull request' buttons on GH
 
 ### Issues
 
-- Issue tracking goes hand-in-hand with pull requests
+- Issue tracking in GitHub goes hand-in-hand with pull requests
 - We can encapsulate all the details (description, images, etc.) in a single place
 - Able to assign people, add labels (including customizing these labels) and assign to a milestone
 - When issue is submitted then we can have a conversation with the team about it
 - We can link the issue to a pull request - so issue will be automatically closed when merge request is successfully merged
+
+### Labels
+
+- From Issues tab, When we click on `[Labels]` we can see all the default labels that exist on every GitHub repo
+  - we can edit these as we please
+- We can also create new labels with a color of our liking (randomly generated)
