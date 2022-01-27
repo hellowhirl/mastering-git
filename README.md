@@ -1474,3 +1474,14 @@ We can use 'Compare & pull request' or 'New pull request' buttons on GH
   - add some issues to a milestone and then see how much we have progressed towards that milestone
 - From Issues tab we can create a milestone with description, set a due date, and then assign it to an issue
   - when the issue is closed then the % completion will reflect in the milestone
+
+### Contributing to Open-source Projects
+
+2 ways:
+
+- create a new issue from issues that we want to work on (feature/bug/etc.)
+- we can go to Issues on GH and select an existing issue
+
+Since we do not have push access to somoene else's repository we need to `Fork` it
+
+- GH will take a complete copy of the repo and put it in our account
