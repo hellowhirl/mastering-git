@@ -1052,7 +1052,7 @@ git branch -D bugfix/photo-upload
   - Git will create new commits that resemble the changes on our other feature branch
   - this can get messed up if other team members push their code on top of that; their history would be lost
 
-First we switch to our target branch, then we tell Git to change the base of this other branch to the last (latest) commit on master:
+#### 1.) First we switch to our target branch, then we tell Git to change the base of this other branch to the last (latest) commit on master:
 
 ```
 git switch feature/shopping-cart
@@ -1060,16 +1060,9 @@ git switch feature/shopping-cart
 git rebase master
 ```
 
-- most of the time in the real world, we will end up with conflicts
-- if we succesfully rebase and decide to merge then Git will do a fast-forward merge to bring the master pointer upward
+#### 2.) Most of the time in the real world, we will end up with conflicts
 
-```
-git switch master
-
-git merge feature/shopping-cart
-```
-
-When we have a merge conflict upon rebase we can use our merge tool:
+When we have a merge conflict upon rebase we can use our merge tool or VS Code:
 
 ```
 git mergetool
@@ -1078,6 +1071,8 @@ git mergetool
 
 git rebase --continue
 ```
+
+- in VS Code after fixing conflicts then we still have to add the fixed files to the staging area (with `git add` or using VS Code features)
 
 Other options:
 
@@ -1101,6 +1096,20 @@ For the future, in order to prevent our merge tool from adding these types of fi
 
 ```
 git config --global mergetool.keepBackup false
+```
+
+#### 3.) to overwrite anything we have previously commited to this side branch then we will have to force push this new ordering of commit history with:
+
+```
+g push -f
+```
+
+#### 4.) If we succesfully rebase on our sub-branch and decide to merge to master then Git will do a fast-forward merge to bring the master pointer upward
+
+```
+git switch master
+
+git merge feature/shopping-cart
 ```
 
 ### Cherry picking
