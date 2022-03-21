@@ -1488,9 +1488,17 @@ We can use 'Compare & pull request' or 'New pull request' buttons on GH
 
 2 ways:
 
-- create a new issue from issues that we want to work on (feature/bug/etc.)
-- we can go to Issues on GH and select an existing issue
+With Push Access:
 
-Since we do not have push access to somoene else's repository we need to `Fork` it
+- Create a new issue from issues that we want to work on (feature/bug/etc.)
+- OR we can go to Issues on GH and select an existing issue
 
-- GH will take a complete copy of the repo and put it in our account
+Without Push Access:
+
+- Since we do not have push access to somoene else's repository we need to `Fork` it
+  - GH will take a complete copy of the repo and put it in our account (with full control)
+  - Then we can clone on our local machine and start working on it
+  - Create a branch, make some changes, commit, push to our remote repo (origin)
+  - Go to GH and push the "Compare & pull request" button
+    - compare our branch to "master" of base repository (the official one)
+  - Communicate with maintainer of repo for working the changes into the base repo
