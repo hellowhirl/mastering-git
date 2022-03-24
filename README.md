@@ -1351,7 +1351,7 @@ git push origin --delete v1.0
 
 Creating a new release:
 
-- when we creat a release GitHub will automatically add our tag to the latest commit
+- when we create a release GitHub will automatically add our tag to the latest commit
 - select target branch (like master)
 - add a title (can be same as tag name like v1.0)
 - in the Write section we can add our release notes, and using hyphens (-) we can add bullet points (Markdown syntax)
@@ -1409,7 +1409,7 @@ git push -d origin feature/testing
 - But when do `git branch` we won't see our new branch.
 - We can only see it with `git branch -r`.
 
-To creat a private branch in our local repository that maps to this remote tracking branch:
+To create a private branch in our local repository that maps to this remote tracking branch:
 
 ```
 git switch -C feature/change-password origin/feature/change-password
@@ -1502,3 +1502,68 @@ Without Push Access:
   - Go to GH and push the "Compare & pull request" button
     - compare our branch to "master" of base repository (the official one)
   - Communicate with maintainer of repo for working the changes into the base repo
+
+### Keeping a Fork up to date
+
+Our forked repo is not connedcted to the base repo, so it can become out of sync with base repo.
+
+- On our machine we have a reference to our forked repo called `origin`
+- We can add another reference to the base repo, and then use `pull` to bring in the new commits, then `push` to our forked repo
+- To see more details about our remote repos we can run `git remote -v` and see that we have channels like below which are mapped to url:
+  - origin https://github.com/username/repo-name.git (fetch) - for getting new objects
+  - origin https://github.com/username/repo-name.git (push) - for pushing new objects
+
+To add a new remote, and give it any name (base, upstream, etc.):
+
+```
+git remote add upstream https://github.com/username/repo-name.git
+```
+
+When we run `git remote -v` again we can see the new remote and which url it is pointing to
+
+To rename a remote repo (from upstream to base):
+
+```
+git remote rename upstream base
+```
+
+If we are done with a remote then we can remote it:
+
+```
+git remote rm base
+```
+
+Get (fetch) the new commits from the base repo (if we don't specify then `origin` will be the default):
+
+```
+git fetch base
+```
+
+If our local master is behind the master of the base repo, then we should merge base/master into our local master.
+
+```
+git switch master
+git merge base/master
+```
+
+- then our local repo will be in sync with the base repo
+  - if there are no conflicts with the base branch then we will get a fast-forward merge
+
+Then we need to push the changes into our forked repo
+
+```
+git push
+```
+
+Then on GH we will see "This branch is even with forked-repository."
+
+After that, it's always a good practice to merge the up to date master branch into our local feature (or bugfix) branch.
+
+```
+git switch bugfix
+git merge master
+```
+
+- This will reduce the chance for conlficts in the future).
+- If there are changes in the master branch that will affect our work, we want to make sure our work is on top of those changes.
+- This helps the maintainer when it comes time to merge our changes and close our pull request.
