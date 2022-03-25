@@ -1214,7 +1214,7 @@ git remote -v
 
 ### Fetching
 
-To download new commits from the remote repository\*:
+To download new commits from all objects from the remote repository\*:
 
 ```
 git fetch origin
@@ -1223,6 +1223,7 @@ git fetch origin
 - moves origin/master forward
 - even though we have downloaded a new commit, our working directory is not updated
 - \* if we leave out `origin` then Git assumes that we want to fetch commits from origin anyway: `git fetch`
+- To fetch only master from origin run `git fetch origin master`
 
 To bring in new changes from origin/master, we have to merge into master:
 
